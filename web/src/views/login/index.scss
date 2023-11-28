@@ -4,4 +4,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #141323;
+  .login-form-wrapper {
+    background-color: #0a0a12;
+    height: 400px;
+    width: 350px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 48px;
+    .web-title-wrapper {
+      margin-bottom: 32px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      > img {
+        width: 40px;
+        margin-right: 12px;
+      }
+      > span {
+        color: #fff;
+        font-size: 18px;
+      }
+    }
+    .btn-form-item {
+      display: flex;
+      justify-content: center;
+    }
+    .login-btn {
+      width: 254px;
+    }
+  }
 }

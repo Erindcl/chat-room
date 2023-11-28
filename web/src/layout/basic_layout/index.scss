@@ -1,15 +1,21 @@
 .basic-layout-wrapper {
-  height: calc(100vh);
+  min-height: calc(100vh);
   width: 100%;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #141323;
+  .layout-sidebar-wrapper {
+    height: calc(100vh - 200px);
+    min-height: 500px;
+    width: 300px;
+    background-color: #08041f;
+  }
   .layout-main-container {
-    width: 100%;
-    height: 400px;
-    flex: auto;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background: #EDEFF1;
+    width: 700px;
+    height: calc(100vh - 200px);
+    min-height: 500px;
+    background: #0a0a12;
   }
 }
 

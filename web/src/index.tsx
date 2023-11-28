@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import Router from './router'
 import store from './store'
 import { Provider } from 'react-redux'
-import { ConfigProvider } from 'antd'
+import { ConfigProvider, theme } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import themeToken from '../src/constants/theme'
 import 'dayjs/locale/zh-cn'
@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(
 )
 root.render(
   <Provider store={store}>
-    <ConfigProvider locale={zhCN} theme={{ token: themeToken }}>
+    <ConfigProvider locale={zhCN} theme={{ algorithm: theme.darkAlgorithm, token: themeToken }}>
       <Router />
     </ConfigProvider>
   </Provider>

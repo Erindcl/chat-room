@@ -1,19 +1,55 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button } from 'antd'
+import { Button, Form, Input } from 'antd'
+import logoImg from '../../assets/images/logo.svg'
 import './index.scss'
 
 const Page: React.FC = () => {
   const navigate = useNavigate()
 
-  const login = () => {
+  const onFinish = (values: any) => {
     navigate('/')
-  }
+  };
 
   return (
     <div className='logo-page'>
-      <Button onClick={login} type="primary">登录</Button>
+      <div className='login-form-wrapper'>
+        <div className='web-title-wrapper'>
+          <img src={logoImg} />
+          <span>CHAT ROOM</span>
+        </div>
+        <Form
+          name="login_form"
+          labelCol={{ span: 0 }}
+          wrapperCol={{ span: 24 }}
+          style={{ width: '100%' }}
+          initialValues={{ username: 'Lily', password: '123456' }}
+          onFinish={onFinish}
+          autoComplete="off"
+        >
+          <Form.Item
+            label=""
+            name="username"
+            rules={[{ required: true, message: 'Please input your username' }]}
+          >
+            <Input placeholder="Username" />
+          </Form.Item>
+
+          <Form.Item
+            label=""
+            name="password"
+            rules={[{ required: true, message: 'Please input your password' }]}
+          >
+            <Input.Password placeholder="Password" />
+          </Form.Item>
+
+          <Form.Item className='btn-form-item'>
+            <Button className='login-btn' type="primary" htmlType="submit">
+              LOG IN
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
     </div>
   )
 }
