@@ -2,7 +2,7 @@ import * as React from "react"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 const BasicLayout = React.lazy(() => import('../layout/basic_layout'))
-const Home = React.lazy(() => import('../views/home'))
+const Chat = React.lazy(() => import('../views/chat'))
 const Login = React.lazy(() => import('../views/login'))
 
 const Loading: React.FC = () => {
@@ -21,8 +21,8 @@ const router: React.FC = () => {
       <React.Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<BasicLayout />}>
-            <Route index element={<Home />} />
-            <Route path="home" element={<Home />} />
+            <Route index element={<Chat />} />
+            <Route path="chat" element={<Chat />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="*" element={<NotFound />} />

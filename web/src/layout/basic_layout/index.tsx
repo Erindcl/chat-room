@@ -37,6 +37,6 @@ const Page: React.FC<IProps> = ({ setUserInfo }) => {
 }
 
 export default connect(
-  () => {},
+  () => ({}),
   (dispatch: any) => bindActionCreators({ setUserInfo }, dispatch)
 )(Page)

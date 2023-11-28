@@ -2,20 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { bindActionCreators } from "redux"
-import { setUserInfo } from '../../store/user/action'
+import { setChatWith } from '../../store/chat_with/action'
 import { IUser } from '../../types'
 import { LogoutOutlined } from '@ant-design/icons'
 import logo from '../../assets/images/logo.svg'
-import avatar from '../../assets/images/avatar.svg'
 import './index.scss'
 
 interface IProps {
-  children?: any;
+  chatWith: IUser;
   userInfo: IUser;
-  setUserInfo: (data: IUser) => void;
+  setChatWith: (data: IUser) => void;
 }
 
-const Sidebar: React.FC<IProps> = ({ userInfo, setUserInfo }) => {
+const Sidebar: React.FC<IProps> = ({ chatWith, userInfo, setChatWith }) => {
   const navigate = useNavigate()
   const [friendList, setFriendList] = useState<any[]>([])
 
@@ -43,7 +42,7 @@ const Sidebar: React.FC<IProps> = ({ userInfo, setUserInfo }) => {
       <div className='friend-list-wrapper'>
         <ul className='friend-list cr-scroll-bar'>
           {friendList.map((ele: any, index: number) => {
-            return (<li key={index} className='friend-item'>
+            return (<li onClick={() => setChatWith(ele)} key={index} className={['friend-item', ele.id === chatWith.id ? 'active' : ''].join(' ')}>
               <img src={require(`../../assets/images/${ele.avatar}.svg`)} alt="avatar"/>
               <span>{ele.name}</span>
             </li>)
@@ -62,7 +61,7 @@ const Sidebar: React.FC<IProps> = ({ userInfo, setUserInfo }) => {
 export default connect(
   (state: any) => ({
     userInfo: { ...state.user },
-    // chatWith: { ...state.chatWith },
+    chatWith: { ...state.chatWith },
   }),
-  (dispatch: any) => bindActionCreators({ setUserInfo }, dispatch)
+  (dispatch: any) => bindActionCreators({ setChatWith }, dispatch)
 )(Sidebar)

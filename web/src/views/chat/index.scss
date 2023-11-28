@@ -1,0 +1,28 @@
+.chat-page {
+  width: 100%;
+  height: 100%;
+
+  .welcome-chat {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    > img {
+      width: 140px;
+    }
+    .welcome-txt {
+      font-size: 20px;
+      font-weight: 500;
+      margin: 20px 0px 4px;
+      > span {
+        color: #4e0fff;
+      }
+    }
+    .desc-txt {
+      font-size: 14px;
+    }
+  }
+}

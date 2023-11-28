@@ -15,7 +15,7 @@ const Page: React.FC = () => {
     <div className='logo-page'>
       <div className='login-form-wrapper'>
         <div className='web-title-wrapper'>
-          <img src={logoImg} />
+          <img src={logoImg} alt='logo' />
           <span>CHAT ROOM</span>
         </div>
         <Form
