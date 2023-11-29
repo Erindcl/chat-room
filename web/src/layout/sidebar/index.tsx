@@ -43,14 +43,14 @@ const Sidebar: React.FC<IProps> = ({ chatWith, userInfo, setChatWith }) => {
         <ul className='friend-list cr-scroll-bar'>
           {friendList.map((ele: any, index: number) => {
             return (<li onClick={() => setChatWith(ele)} key={index} className={['friend-item', ele.id === chatWith.id ? 'active' : ''].join(' ')}>
-              <img src={require(`../../assets/images/${ele.avatar}.svg`)} alt="avatar"/>
+              <img src={require(`../../assets/images/avatar/${ele.avatar}.svg`)} alt="avatar"/>
               <span>{ele.name}</span>
             </li>)
           })}
         </ul>
       </div>
       <div className="user-wrapper">
-        <img src={require(`../../assets/images/${userInfo.avatar}.svg`)} alt="avatar"/>
+        <img src={require(`../../assets/images/avatar/${userInfo.avatar}.svg`)} alt="avatar"/>
         <span>{userInfo.name}</span>
         <LogoutOutlined className='logout-btn' onClick={logout} />
       </div>
