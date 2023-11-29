@@ -1,7 +1,7 @@
 
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import user from './user'
-import chatWith from './chat_with'
+import chatWith from './chatWith'
 import thunkMiddleware from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 const appReducer = {

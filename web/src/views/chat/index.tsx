@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux"
 import { Button, Input, message as Message } from 'antd'
-import { setChatWith } from '../../store/chat_with/action'
+import { setChatWith } from '../../store/chatWith/action'
 import { CloseOutlined } from '@ant-design/icons'
 import { IUser } from '../../types'
 import robot from '../../assets/images/robot.svg'

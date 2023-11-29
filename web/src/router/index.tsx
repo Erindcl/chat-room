@@ -1,7 +1,7 @@
 import * as React from "react"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-const BasicLayout = React.lazy(() => import('../layout/basic_layout'))
+const BasicLayout = React.lazy(() => import('../layout/basicLayout'))
 const Chat = React.lazy(() => import('../views/chat'))
 const Login = React.lazy(() => import('../views/login'))
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { bindActionCreators } from "redux"
-import { setChatWith } from '../../store/chat_with/action'
+import { setChatWith } from '../../store/chatWith/action'
 import { IUser } from '../../types'
 import { LogoutOutlined } from '@ant-design/icons'
 import logo from '../../assets/images/logo.svg'
