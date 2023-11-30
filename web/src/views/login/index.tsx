@@ -1,15 +1,32 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button, Form, Input } from 'antd'
+import { Button, Form, Input, message as Message } from 'antd'
 import logoImg from '../../assets/images/logo.svg'
+import { API } from '../../api'
 import './index.scss'
 
 const Page: React.FC = () => {
   const navigate = useNavigate()
 
   const onFinish = (values: any) => {
-    navigate('/')
+    // navigate('/')
+    register()
   };
+
+  const register = async () => {
+    const res: any = await API.register({
+      name: 'Cookie',
+      avatar: 'cookie',
+      password: '123456',
+    })
+    if (!res) return;
+    const { code, message, data } = res
+    if (code === '000000') {
+      console.log(data)
+    } else {
+      Message.error(message)
+    }
+  }
 
   return (
     <div className='logo-page'>

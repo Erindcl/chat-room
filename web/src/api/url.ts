@@ -1,11 +1,11 @@
 const api: any = {
   login: { // 登录
     method: 'post',
-    url: '/pm/h5/login'
+    url: '/api/auth/login'
   },
-  getMsgCode: { // 获取登录验证码
-    method: 'postForm',
-    url: '/pm/h5/sendCode'
+  register: { // 注册
+    method: 'post',
+    url: '/api/auth/register'
   },
 }
 
