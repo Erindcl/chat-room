@@ -1,21 +1,43 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators } from "redux"
+import { setUserInfo } from '../../store/user/action'
+import { IUser } from '../../types'
 import { Button, Form, Input, message as Message } from 'antd'
 import logoImg from '../../assets/images/logo.svg'
 import { API } from '../../api'
 import './index.scss'
 
-const Page: React.FC = () => {
+interface IProps {
+  setUserInfo: (data: IUser) => void;
+}
+
+const Page: React.FC<IProps> = ({ setUserInfo }) => {
   const navigate = useNavigate()
 
   const onFinish = (values: any) => {
     // navigate('/')
-    register()
+    login(values)
+    // register()
   };
 
+  const login = async (values: any) => {
+    const res: any = await API.login(values)
+    if (!res) return;
+    const { code, message, data } = res
+    if (code === '000000') {
+      setUserInfo(data)
+      navigate('/')
+    } else {
+      Message.error(message)
+    }
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const register = async () => {
     const res: any = await API.register({
-      name: 'Cookie',
+      username: 'Cookie',
       avatar: 'cookie',
       password: '123456',
     })
@@ -71,4 +93,7 @@ const Page: React.FC = () => {
   )
 }
 
-export default Page
+export default connect(
+  () => ({}),
+  (dispatch: any) => bindActionCreators({ setUserInfo }, dispatch)
+  )(Page)

@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { bindActionCreators } from "redux"
-import { setUserInfo } from '../../store/user/action'
 import { IUser } from '../../types'
 import { Spin } from 'antd';
 import Sidebar from '../sidebar'
 import './index.scss';
 
 interface IProps {
-  setUserInfo: (data: IUser) => void;
+  userInfo: IUser;
 }
 
-const Page: React.FC<IProps> = ({ setUserInfo }) => {
+const Page: React.FC<IProps> = ({ userInfo }) => {
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const tempUser = { id: 1, name: 'Cookies', avatar: 'cookies' }
-    setUserInfo(tempUser)
-    setLoading(false)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    if (userInfo.id) {
+      setLoading(false)
+    } else {
+      navigate('/login')
+    }
+  }, [userInfo])
 
   return (!loading ?
     <div className='basic-layout-wrapper'>
@@ -37,6 +38,7 @@ const Page: React.FC<IProps> = ({ setUserInfo }) => {
 }
 
 export default connect(
-  () => ({}),
-  (dispatch: any) => bindActionCreators({ setUserInfo }, dispatch)
+  (state: any) => ({
+    userInfo: { ...state.user },
+  })
 )(Page)

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { bindActionCreators } from "redux"
 import { setChatWith } from '../../store/chatWith/action'
+import { setUserInfo } from '../../store/user/action'
 import { IUser } from '../../types'
 import { LogoutOutlined } from '@ant-design/icons'
 import logo from '../../assets/images/logo.svg'
@@ -12,9 +13,10 @@ interface IProps {
   chatWith: IUser;
   userInfo: IUser;
   setChatWith: (data: IUser) => void;
+  setUserInfo: (data?: IUser) => void;
 }
 
-const Sidebar: React.FC<IProps> = ({ chatWith, userInfo, setChatWith }) => {
+const Sidebar: React.FC<IProps> = ({ chatWith, userInfo, setChatWith, setUserInfo }) => {
   const navigate = useNavigate()
   const [friendList, setFriendList] = useState<any[]>([])
 
@@ -30,6 +32,7 @@ const Sidebar: React.FC<IProps> = ({ chatWith, userInfo, setChatWith }) => {
   }, [])
 
   const logout = () => {
+    setUserInfo()
     navigate('/login')
   }
 
@@ -63,5 +66,5 @@ export default connect(
     userInfo: { ...state.user },
     chatWith: { ...state.chatWith },
   }),
-  (dispatch: any) => bindActionCreators({ setChatWith }, dispatch)
+  (dispatch: any) => bindActionCreators({ setChatWith, setUserInfo }, dispatch)
 )(Sidebar)
